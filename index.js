@@ -8,7 +8,7 @@ dateForm.addEventListener('submit', e => {
     const timeInput = document.getElementById('time-input');
     const eventDate = Date.parse(dateInput.value + ' ' + timeInput.value)
 
-    console.log(eventDate);
+    // console.log(eventDate);
 
     window.eventCountDown && clearInterval(window.eventCountDown);
 
@@ -22,9 +22,9 @@ dateForm.addEventListener('submit', e => {
         const secondsDivider = 1000;
 
         const day = Math.floor(eventDate / daysDivider - now / daysDivider);
-        const hour = Math.floor(eventDate / hoursDivider - now / hoursDivider % 24);
-        const minute = Math.floor(eventDate / minutesDivider - now / minutesDivider % 60);
-        const second = Math.floor(eventDate / secondsDivider - now / secondsDivider % 60);
+        const hour = Math.floor((eventDate / hoursDivider - now / hoursDivider) % 24);
+        const minute = Math.floor((eventDate / minutesDivider - now / minutesDivider) % 60);
+        const second = Math.floor((eventDate / secondsDivider - now / secondsDivider) % 60);
 
         const diff = eventDate - now;
         if (diff > 0) {
